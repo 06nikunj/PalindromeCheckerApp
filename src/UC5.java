@@ -1,0 +1,44 @@
+import java.util.Scanner;
+import java.util.Stack;
+
+public class UC5 {
+
+    public static void main(String[] args){
+        System.out.println("Welcome to the Palindrome Checker Management System");
+        System.out.println("Version : 5.0");
+        System.out.println("System initialized Successfully.");
+
+        Scanner sc = new Scanner(System.in);
+
+        System.out.println("\nInput text:");
+        String str = sc.nextLine();
+
+        if (isPalindrome(str)) {
+            System.out.println("The string is a palindrome.");
+        } else {
+            System.out.println("The string is NOT a palindrome.");
+        }
+
+        sc.close();
+    }
+
+    // Method to check palindrome using Stack
+    public static boolean isPalindrome(String str) {
+
+        Stack<Character> stack = new Stack<>();
+
+        // Push characters into stack
+        for (char c : str.toCharArray()) {
+            stack.push(c);
+        }
+
+        // Compare characters
+        for (char c : str.toCharArray()) {
+            if (c != stack.pop()) {
+                return false;
+            }
+        }
+
+        return true;
+    }
+}
